@@ -1,6 +1,22 @@
 import swaggerJsdoc from "swagger-jsdoc";
 
 const isProd = process.env.NODE_ENV === "production";
+const PORT = process.env.PORT || 4000;
+
+const servers = [
+  {
+    url: `http://localhost:${PORT}/api`,
+    description: "Servidor local",
+  },
+];
+
+// Render inyecta esta variable automáticamente en cada servicio desplegado
+if (process.env.RENDER_EXTERNAL_URL) {
+  servers.unshift({
+    url: `${process.env.RENDER_EXTERNAL_URL}/api`,
+    description: "Servidor en producción (Render)",
+  });
+}
 
 const options: swaggerJsdoc.Options = {
   definition: {
