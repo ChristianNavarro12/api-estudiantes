@@ -26,12 +26,7 @@ const options: swaggerJsdoc.Options = {
       version: "1.0.0",
       description: "API REST para gestión de estudiantes — CRUD con validación (Zod) y Prisma + MySQL.",
     },
-    servers: [
-      {
-        url: "http://localhost:4000/api",
-        description: "Servidor local",
-      },
-    ],
+    servers,
     components: {
       schemas: {
         Student: {
